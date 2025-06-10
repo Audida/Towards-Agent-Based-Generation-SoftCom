@@ -1,0 +1,14 @@
+1. Entry point: Externally exposed HTTP service on port 80 with outdated and unpatched WordPress installation.
+   - Vulnerability exploited: Exploitation of the known WordPress vulnerability CVE-2019-11371 (Remote Code Execution in PHP Deserialization).
+   - Resulting gain: Shell access to the server.
+   - Logical reason the attacker can proceed to the next step: The attacker gains shell access and can now explore the system for further opportunities.
+
+2. Entry point: The compromised server with shell access.
+   - Vulnerability exploited: Exploitation of the misconfigured sudoers file allowing the attacker to escalate privileges to the root user.
+   - Resulting gain: Root access to the server.
+   - Logical reason the attacker can proceed to the next step: The attacker has escalated privileges and can now access sensitive data and resources.
+
+3. Entry point: The compromised server with root access.
+   - Vulnerability exploited: Exploitation of the misconfigured MySQL database with a weak password.
+   - Resulting gain: Access to sensitive customer data stored in the database.
+   - Logical reason the attacker can proceed to the next step: The attacker has gained access to the database and can now exfiltrate data.

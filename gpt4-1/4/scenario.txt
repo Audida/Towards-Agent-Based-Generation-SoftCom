@@ -1,0 +1,15 @@
+Step 1: Entry Point – Exposed Web Application with Outdated CMS  
+- Vulnerability Exploited: The attacker discovers an externally accessible HTTP port (port 80/443) running a popular content management system (CMS) that is several versions out of date. The CMS has a known remote code execution (RCE) vulnerability that can be exploited via a crafted HTTP POST request.
+- Resulting Gain: The attacker gains remote code execution on the web server, resulting in a low-privilege shell within the web application container.
+- Logical Reason to Proceed: With shell access, the attacker can enumerate the environment for further weaknesses, such as misconfigurations or sensitive files.
+
+Step 2: Privilege Escalation via Hard-Coded Credentials  
+- Vulnerability Exploited: While exploring the container’s filesystem, the attacker finds a configuration file containing hard-coded credentials for a backend database (e.g., MySQL or PostgreSQL). These credentials are reused for the local OS user account due to poor security practices.
+- Resulting Gain: The attacker uses the discovered credentials to escalate privileges, gaining access to the database and potentially elevating to a higher-privileged user within the container.
+- Logical Reason to Proceed: With database access, the attacker can extract sensitive information and look for further lateral movement opportunities, such as connections to other systems.
+
+Step 3: Lateral Movement via Misconfigured Internal Service  
+- Entry Point: The attacker notices that the compromised container has network access to an internal service (e.g., Redis or an internal API) that is not exposed to the Internet but is accessible from within the network.
+- Vulnerability Exploited: The internal service is misconfigured to allow unauthenticated access or uses default credentials. The attacker connects and exploits this weakness to interact with the service.
+- Resulting Gain: The attacker is able to dump sensitive data from the internal service or leverage it to execute further commands on additional hosts, expanding their foothold within the environment.
+- Logical Reason to Proceed: This lateral movement enables the attacker to compromise additional systems, access more sensitive data, or establish persistence within the target network.

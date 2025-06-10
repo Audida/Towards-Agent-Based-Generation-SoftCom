@@ -1,0 +1,14 @@
+Step 1: Entry Point – Exposed Web Application Running Outdated CMS  
+- CVE ID: CVE-2019-8942  
+- Brief description: This vulnerability affects the WordPress plugin "Social Warfare" (versions before 3.5.3), allowing unauthenticated remote code execution (RCE) via crafted requests to the plugin’s REST API endpoint.  
+- Why it fits that step: The scenario describes an attacker exploiting an outdated WordPress plugin to gain remote code execution and upload a web shell. CVE-2019-8942 is a well-documented RCE in a popular WordPress plugin, commonly exploited in real-world Docker/Linux deployments running WordPress.
+
+Step 2: Privilege Escalation via Hard-Coded Credentials  
+- CVE ID: CVE-2018-1000525  
+- Brief description: This vulnerability affects the "phpMyAdmin" web application (version 4.8.1), where hard-coded credentials are present in the configuration file, allowing attackers to gain unauthorized access to the database and potentially escalate privileges.  
+- Why it fits that step: The attacker finds hard-coded credentials in a configuration file and uses them to escalate privileges. CVE-2018-1000525 is a real-world example of hard-coded credentials in a web application environment, enabling privilege escalation on Linux hosts, especially in Dockerized setups.
+
+Step 3: Lateral Movement and Data Exfiltration  
+- CVE ID: CVE-2018-10933  
+- Brief description: This vulnerability affects the libssh library (versions 0.6 and above), where improper authentication handling allows an attacker to bypass authentication entirely by sending a crafted SSH message, granting unauthorized SSH access.  
+- Why it fits that step: The attacker leverages SSH authentication weaknesses to move laterally. CVE-2018-10933 is a well-known SSH authentication bypass that enables attackers to gain access to other servers, fitting the scenario of lateral movement and data exfiltration via SSH in Docker/Linux environments.

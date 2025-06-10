@@ -1,0 +1,14 @@
+Step 1: Entry Point – Exposed HTTP Web Application with Outdated CMS  
+- Vulnerability Exploited: The attacker discovers an Internet-facing web application running on an outdated version of WordPress (or similar CMS) with a known remote code execution (RCE) vulnerability.  
+- Resulting Gain: The attacker exploits the RCE to gain a web shell on the underlying server, providing the ability to execute arbitrary commands as the web server user.  
+- Logical Reason to Proceed: With shell access, the attacker can enumerate the local file system and running processes for further weaknesses.
+
+Step 2: Privilege Escalation via Hard-Coded Credentials  
+- Vulnerability Exploited: While exploring configuration files on the compromised server, the attacker finds hard-coded credentials for a local MySQL database in the web application’s config file.  
+- Resulting Gain: The attacker uses these credentials to access the MySQL database directly, allowing for database dumps and further exploration of stored sensitive information.  
+- Logical Reason to Proceed: Database access may reveal user data, application secrets, or additional credentials that can be leveraged for lateral movement.
+
+Step 3: Lateral Movement to Internal Network via Misconfigured SSH  
+- Vulnerability Exploited: The attacker finds that the database contains plaintext credentials for internal user accounts, including SSH login details for another server on the internal network. Additionally, SSH on the internal server is misconfigured to allow password authentication from the compromised web server’s IP.  
+- Resulting Gain: The attacker uses the discovered credentials to log in to the internal server via SSH, gaining an interactive shell with user privileges on a new host deeper in the network.  
+- Logical Reason to Proceed: The new foothold inside the internal network can be used for further reconnaissance, privilege escalation, or access to sensitive internal systems.

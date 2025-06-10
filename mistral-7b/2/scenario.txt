@@ -1,0 +1,14 @@
+1. Entry point: Externally exposed HTTP service on port 80 with outdated and unpatched web application (e.g., Drupal 7 or Joomla 2.5)
+   - Vulnerability exploited: Remote Code Execution (RCE) vulnerability in the affected version of the web application (e.g., Drupalgeddon2)
+   - Resulting gain: Shell access on the web server (e.g., via a reverse shell)
+   - Logical reason the attacker can proceed to the next step: The attacker now has shell access to the web server, which can be used to search for and access sensitive data or pivot to other systems within the network
+
+2. Entry point: Sensitive data stored in a database accessible from the compromised web server (e.g., MySQL or MongoDB)
+   - Vulnerability exploited: Weak or hard-coded database credentials found in the web application's source code or configuration files
+   - Resulting gain: Database dump containing sensitive data (e.g., usernames, passwords, credit card numbers)
+   - Logical reason the attacker can proceed to the next step: The attacker has gained access to sensitive data, which can be used for further attacks (e.g., credential stuffing, financial fraud)
+
+3. Entry point: Another service or interface accessible from the compromised web server (e.g., SSH, FTP, or RDP)
+   - Vulnerability exploited: Weak or default passwords for the service found in system logs or configuration files
+   - Resulting gain: Shell access on the targeted system (e.g., Linux or Windows)
+   - Logical reason the attacker can proceed to the next step: The attacker now has shell access to another system within the network, which can be used to search for and access more sensitive data or pivot to other systems within the network.

@@ -1,0 +1,19 @@
+Step 1: Entry point – Exposed HTTP Port with Vulnerable Web Application  
+- CVE ID: CVE-2019-8942  
+- Brief description: WordPress before 5.0.1 allows remote attackers to execute arbitrary code via crafted requests that exploit a file upload vulnerability in the media library. This allows attackers to upload and execute malicious PHP files through the web interface.  
+- Why it fits that step: This CVE is a well-documented remote code execution vulnerability affecting WordPress, a common web application often deployed in Docker/Linux environments. Exploiting this flaw on an exposed HTTP port would allow an attacker to gain initial shell access as the web server user, matching the described attack scenario.
+
+Step 2: Privilege Escalation via Hard-Coded Credentials  
+- CVE ID: CVE-2018-15133  
+- Brief description: Laravel Framework before 5.7.7 uses a default APP_KEY value in the .env configuration file. If this key is not changed, attackers can exploit it to decrypt sensitive data, including hard-coded credentials, and potentially gain unauthorized access to privileged accounts or services.  
+- Why it fits that step: This CVE demonstrates the risk of hard-coded or default credentials in configuration files, a common misconfiguration in Dockerized applications. Attackers who gain initial access can use these credentials to escalate privileges, as described in the scenario.
+
+Step 3: Lateral Movement and Sensitive Data Exfiltration  
+- CVE ID: CVE-2018-10933  
+- Brief description: libssh versions 0.6 and above have an authentication bypass vulnerability that allows attackers to authenticate to a server without credentials by sending a crafted SSH message. This can be exploited to move laterally within a network or exfiltrate sensitive data if SSH keys or credentials are present on the compromised host.  
+- Why it fits that step: This CVE enables attackers to use discovered SSH keys or exploit SSH misconfigurations for lateral movement and data exfiltration, aligning with the final stage of the attack scenario where the attacker pivots to other systems or steals sensitive data.
+
+Summary:
+1. CVE-2019-8942 – RCE via vulnerable WordPress file upload (initial foothold)
+2. CVE-2018-15133 – Privilege escalation via hard-coded credentials in Laravel
+3. CVE-2018-10933 – Lateral movement/data exfiltration via SSH authentication bypass

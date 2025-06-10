@@ -1,0 +1,14 @@
+Step 1: Entry Point - Exposed Web Application on Port 80  
+Vulnerability Exploited: The web application is running an outdated content management system (CMS) with a known remote code execution (RCE) vulnerability.  
+Resulting Gain: The attacker sends a specially crafted HTTP request to exploit the vulnerability, gaining remote code execution and an initial web shell on the server.  
+Logical Reason to Proceed: With shell access, the attacker can enumerate the environment for further weaknesses, such as configuration files or credentials.
+
+Step 2: Entry Point - Access to Configuration Files via Web Shell  
+Vulnerability Exploited: The application stores hard-coded database credentials in a world-readable configuration file within the web root.  
+Resulting Gain: The attacker reads the configuration file using the web shell and obtains valid credentials for the backend database.  
+Logical Reason to Proceed: With database credentials, the attacker can connect to the database and query or modify its contents directly.
+
+Step 3: Entry Point - Authenticated Access to the Database  
+Vulnerability Exploited: The database is running on the same host and is accessible via localhost, but is not patched against a privilege escalation vulnerability (e.g., a known flaw in the database software that allows escalation from user to admin).  
+Resulting Gain: The attacker exploits the privilege escalation flaw to gain administrative access to the database, allowing full data exfiltration (dumping sensitive user data) and potentially further lateral movement within the internal network if the database contains additional credentials or network information.  
+Logical Reason to Proceed: With admin database access and sensitive data in hand, the attacker can now pivot to other systems or monetize the breach.

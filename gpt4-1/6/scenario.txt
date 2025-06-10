@@ -1,0 +1,14 @@
+Step 1: Entry Point – Exposed Web Application with Outdated CMS  
+- Vulnerability Exploited: The attacker discovers an externally accessible HTTP port (port 80) hosting a WordPress site running an outdated version with a known remote code execution (RCE) vulnerability (e.g., an unpatched plugin).  
+- Resulting Gain: The attacker exploits the RCE flaw to gain a web shell on the underlying server, allowing arbitrary command execution as the web server user.  
+- Logical Reason to Proceed: With shell access, the attacker can enumerate the system for further weaknesses and pivot to other internal resources.
+
+Step 2: Privilege Escalation via Misconfigured Sudo  
+- Vulnerability Exploited: While exploring the compromised system, the attacker finds that the web server user is permitted to run certain commands as root without a password via a misconfigured sudoers entry (e.g., can run /usr/bin/vim as root).  
+- Resulting Gain: The attacker leverages this misconfiguration to escalate privileges from the web server user to root, gaining full administrative control over the server.  
+- Logical Reason to Proceed: As root, the attacker can access sensitive files and credentials, as well as interact with other services running on the host.
+
+Step 3: Lateral Movement to Internal Database via Hard-Coded Credentials  
+- Vulnerability Exploited: With root access, the attacker locates a configuration file containing hard-coded credentials for an internal MySQL database (e.g., in wp-config.php). The database is only accessible from the local network.  
+- Resulting Gain: Using the recovered credentials, the attacker connects to the internal database, extracting sensitive data such as user information, password hashes, and business records.  
+- Logical Reason to Proceed: Access to the database allows the attacker to exfiltrate valuable information, complete their objectives, or further pivot within the internal network using compromised data.

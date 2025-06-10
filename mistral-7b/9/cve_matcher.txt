@@ -1,0 +1,16 @@
+1. Entry point: Externally exposed HTTP port (e.g., port 80) with a vulnerable web application (e.g., Drupal CMS with known exploitable version).
+   - CVE ID: CVE-2018-7600
+   - Brief description: Drupalgeddon2, a Remote Code Execution (RCE) vulnerability in Drupal's file_unmanaged_save() function.
+   - Why it fits that step: This vulnerability can be exploited remotely to execute arbitrary code on the web server, providing the attacker with shell access.
+
+2. Entry point: The compromised web server with escalated privileges.
+   - CVE ID: CVE-2015-3113
+   - Brief description: OpenSSL Heartbleed, a locally exploitable privilege escalation vulnerability in OpenSSL.
+   - Why it fits that step: This vulnerability can be exploited to read the memory of the affected system, potentially leading to the disclosure of sensitive information and, in some cases, privilege escalation.
+   - Logical reason the attacker can proceed to the next step: If the attacker can escalate their privileges, they will gain root access to the compromised web server.
+
+3. Entry point: The compromised web server with root access.
+   - CVE ID: CVE-2012-2122
+   - Brief description: MySQL "blank password" vulnerability, a misconfiguration that allows unauthorized access to the MySQL database when no password is set for the root user.
+   - Why it fits that step: With root access to the web server, the attacker can potentially access the MySQL database without proper authentication if the password is not set or is weak.
+   - Logical reason the attacker can proceed to the next step: Once the attacker has unauthorized access to the database, they can dump sensitive user data.

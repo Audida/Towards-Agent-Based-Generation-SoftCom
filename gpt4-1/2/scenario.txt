@@ -1,0 +1,15 @@
+Step 1: Entry Point – Exposed Web Application with Outdated CMS  
+- Vulnerability exploited: The attacker discovers an externally accessible web application running on HTTP port 80. The application uses an outdated version of WordPress with a known remote code execution (RCE) vulnerability.  
+- Resulting gain: The attacker exploits the RCE vulnerability to gain a web shell on the underlying server, achieving initial foothold with the privileges of the web server process.  
+- Logical reason to proceed: With web shell access, the attacker can enumerate the local environment and search for further weaknesses.
+
+Step 2: Privilege Escalation via Misconfigured Sudo Permissions  
+- Vulnerability exploited: While exploring the compromised server, the attacker finds that the web server user has been granted passwordless sudo access to a backup script (e.g., /usr/local/bin/backup.sh) due to overly broad sudoers configuration. The script is writable by the web server user.  
+- Resulting gain: The attacker modifies the backup script to include a reverse shell payload and executes it via sudo, escalating privileges to root on the host.  
+- Logical reason to proceed: With root access, the attacker can access sensitive files and credentials stored on the server, including those used by other services.
+
+Step 3: Lateral Movement to Database via Hard-Coded Credentials  
+- Entry point: The attacker, now with root access, locates a configuration file containing hard-coded database credentials (e.g., in wp-config.php).  
+- Vulnerability exploited: The attacker uses these credentials to connect to the internal MySQL database, which is accessible from the compromised host but not exposed externally.  
+- Resulting gain: The attacker dumps the entire database, obtaining sensitive user data and potentially more credentials for further attacks.  
+- Logical reason to proceed: Access to the database allows the attacker to exfiltrate valuable data and potentially leverage information for additional lateral movement or external compromise.

@@ -1,0 +1,14 @@
+Step 1: Entry Point – Exposed Web Application with Outdated CMS  
+- Vulnerability exploited: The attacker discovers an externally accessible HTTP port (port 80) hosting a web application running an outdated version of WordPress with a known remote code execution (RCE) vulnerability.  
+- Resulting gain: The attacker exploits the RCE vulnerability to gain a web shell on the underlying server, allowing remote command execution as the web server user.  
+- Logical reason to proceed: With shell access, the attacker can enumerate the file system and running processes to look for further weaknesses or sensitive information.
+
+Step 2: Privilege Escalation via Hard-Coded Database Credentials  
+- Vulnerability exploited: While browsing the application files, the attacker finds hard-coded MySQL database credentials in the WordPress configuration file (wp-config.php).  
+- Resulting gain: Using these credentials, the attacker connects to the MySQL database and obtains access to all stored data, including user tables and potentially password hashes.  
+- Logical reason to proceed: With database access, the attacker can look for credentials reused elsewhere or escalate access by pivoting to other internal systems referenced in the database.
+
+Step 3: Lateral Movement to Internal Network via Misconfigured Docker Socket  
+- Vulnerability exploited: During further enumeration, the attacker discovers that the Docker socket (/var/run/docker.sock) is mounted and accessible from the compromised container or host. This socket is world-writable due to a misconfiguration.  
+- Resulting gain: The attacker interacts with the Docker API to spawn a new privileged container, granting themselves root access on the host. From here, they can scan and access other internal systems, achieving full lateral movement within the internal network.  
+- Logical reason to proceed: Root access on the host allows the attacker to pivot further, compromise additional assets, and exfiltrate sensitive data from other parts of the environment.

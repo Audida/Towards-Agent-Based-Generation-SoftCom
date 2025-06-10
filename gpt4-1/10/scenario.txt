@@ -1,0 +1,14 @@
+Step 1: Entry Point: Exposed HTTP Port (Web Application)
+- Vulnerability Exploited: The attacker discovers an outdated version of a popular Content Management System (CMS) running on port 80, which is vulnerable to a known remote code execution (RCE) flaw due to unpatched software.
+- Resulting Gain: The attacker leverages the RCE vulnerability to obtain a web shell on the underlying server, granting initial foothold with the same privileges as the web server process.
+- Logical Reason to Proceed: With shell access, the attacker can enumerate local files and processes, seeking additional weaknesses or sensitive information.
+
+Step 2: Entry Point: Local Configuration Files Accessible via Web Shell
+- Vulnerability Exploited: The attacker locates hard-coded database credentials in the CMS configuration file, which are stored in plaintext and used by the application to connect to its backend database.
+- Resulting Gain: Using these credentials, the attacker connects to the internal database server (e.g., MySQL or PostgreSQL), gaining direct access to read and modify database contents.
+- Logical Reason to Proceed: With database access, the attacker can now search for further sensitive data or attempt lateral movement by identifying other services or credentials stored in the database.
+
+Step 3: Entry Point: Database Access with Reused Credentials
+- Vulnerability Exploited: The attacker discovers that the same database credentials are reused for an internal administrative SSH account (a common misconfiguration), as documented in a table of service accounts within the database.
+- Resulting Gain: The attacker uses the credentials to successfully authenticate via SSH to another internal server, escalating their access from the web application environment to broader internal network control.
+- Logical Reason to Proceed: With SSH access to an internal administrative account, the attacker can now move laterally within the organization, target additional systems, or exfiltrate sensitive data.

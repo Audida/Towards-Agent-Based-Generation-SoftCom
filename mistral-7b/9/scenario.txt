@@ -1,0 +1,14 @@
+1. Entry point: Externally exposed HTTP port (e.g., port 80) with a vulnerable web application (e.g., Drupal CMS with known exploitable version).
+   - Vulnerability exploited: Remote Code Execution (RCE) vulnerability in Drupal's file_unmanaged_save() function (e.g., CVE-2018-7600).
+   - Resulting gain: Shell access on the web server (e.g., via a reverse shell).
+   - Logical reason the attacker can proceed to the next step: The attacker now has shell access to the web server, which can be used to explore and exploit further vulnerabilities.
+
+2. Entry point: The compromised web server with escalated privileges.
+   - Vulnerability exploited: Locally exploitable privilege escalation vulnerability in a package installed on the web server (e.g., a vulnerable version of OpenSSL).
+   - Resulting gain: Root access on the compromised web server.
+   - Logical reason the attacker can proceed to the next step: The attacker now has root access to the web server, which provides access to sensitive data and other resources on the server.
+
+3. Entry point: The compromised web server with root access.
+   - Vulnerability exploited: Misconfigured database connection settings in a web application (e.g., MySQL with a weak password or no authentication).
+   - Resulting gain: Unauthorized access to the web application's database (e.g., dumping sensitive user data).
+   - Logical reason the attacker can proceed to the next step: The attacker has access to the database connection settings due to their root access on the web server, allowing them to access the database without proper authentication.

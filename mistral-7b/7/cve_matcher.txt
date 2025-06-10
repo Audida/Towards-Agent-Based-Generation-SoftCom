@@ -1,0 +1,11 @@
+1. CVE-2017-5638
+   - Brief description: Apache Struts Remote Code Execution (RCE) vulnerability due to improper input validation of the Content-Type header in the Struts 2 Web application.
+   - Why it fits that step: The attacker exploits this vulnerability by sending a maliciously crafted JSON payload in the Content-Type header to execute arbitrary code on the target system, resulting in shell access as the user running the Apache service.
+
+2. No CVE directly matches the described misconfiguration of weak login credentials, as CVEs typically refer to software vulnerabilities, not misconfigurations. However, the attack method (brute-force attack or use of stolen credentials) can be associated with various CVEs related to weak passwords or insecure authentication practices. For example:
+   - CVE-2019-15126: Apache Struts 2.x Remote Code Execution (RCE) vulnerability due to improper input validation of the S2-HTTPHEADER parameter, which can be exploited to bypass authentication and execute arbitrary code.
+   - CVE-2019-16521: Apache Tomcat Remote Code Execution (RCE) vulnerability due to improper input validation of the JSP page request header, which can be exploited to bypass authentication and execute arbitrary code.
+
+3. CVE-2019-7601
+   - Brief description: Elasticsearch Remote Code Execution (RCE) vulnerability due to improper input validation of the Kibana Console, which can be exploited to execute arbitrary commands with root privileges.
+   - Why it fits that step: The attacker exploits this vulnerability by sending malicious commands through the Kibana Console to access sensitive data stored in the Elasticsearch indexes, resulting in unauthorized access to the Elasticsearch API. This CVE is particularly relevant as it occurs in a Docker/Linux environment.

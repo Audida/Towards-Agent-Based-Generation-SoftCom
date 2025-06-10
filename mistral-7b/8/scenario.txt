@@ -1,0 +1,14 @@
+1. Entry point: Externally exposed, misconfigured Apache HTTP server on port 80
+   - Vulnerability exploited: CVE-2019-0211 (Apache Log4j2 Remote Code Execution)
+   - Resulting gain: Remote code execution in the context of the Apache server
+   - Logical reason the attacker can proceed to the next step: The attacker now has the ability to execute commands on the server, potentially escalating privileges to gain more access.
+
+2. Entry point: Privilege escalation using exploited Apache server
+   - Vulnerability exploited: CVE-2017-1000356 (Linux sudo misconfiguration)
+   - Resulting gain: Persistent shell access with sudo privileges
+   - Logical reason the attacker can proceed to the next step: The attacker now has the ability to execute commands with elevated privileges, potentially accessing sensitive data or services.
+
+3. Entry point: Privileged shell access
+   - Vulnerability exploited: CVE-2017-1000350 (MongoDB RCE via unauthenticated REST API)
+   - Resulting gain: Unauthorized access to a MongoDB database containing sensitive data
+   - Logical reason the attacker can proceed to the next step: The attacker has gained access to a MongoDB server, which stores sensitive data, and can now extract this data using the unauthenticated REST API.

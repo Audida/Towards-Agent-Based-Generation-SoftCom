@@ -1,0 +1,14 @@
+1. Entry point: Externally exposed HTTP server running on port 80 with outdated and unpatched Struts vulnerability (CVE-2017-5638).
+   Vulnerability exploited: Remote Code Execution (RCE) via a crafted malicious request to the /struts2-json-plugin/JSON-Validate action.
+   Resulting gain: Shell access on the server.
+   Logical reason the attacker can proceed to the next step: The shell access allows the attacker to explore the system, find other vulnerable services, and potentially escalate privileges.
+
+2. Entry point: SSH service running on port 22 with weak login credentials (default username and password).
+   Vulnerability exploited: Brute-force attack using a list of common default passwords.
+   Resulting gain: Unauthorized access to the server with the user account that has higher privileges than in the previous step.
+   Logical reason the attacker can proceed to the next step: The higher privileges allow the attacker to perform actions that were not possible with the lower-privileged user account, such as accessing sensitive data or modifying system settings.
+
+3. Entry point: Database server running on port 3306 with an unsecured MySQL root account using a weak password.
+   Vulnerability exploited: Brute-force attack using a list of common weak passwords.
+   Resulting gain: Unauthorized access to the database server with the MySQL root account.
+   Logical reason the attacker can proceed to the next step: The unauthorized access to the database server allows the attacker to dump sensitive data, such as user credentials, financial information, or intellectual property. The attacker can also modify or delete data, disrupting the operations of the targeted organization.

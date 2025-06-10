@@ -1,0 +1,14 @@
+1. Entry point: Externally exposed HTTP service on port 80 with outdated and unpatched version of Apache Struts (CVE-2017-5638).
+   - Vulnerability exploited: Remote Code Execution (RCE) via a maliciously crafted JSON payload in the Content-Type header.
+   - Resulting gain: Shell access as the user running the Apache service.
+   - Logical reason the attacker can proceed to the next step: The attacker now has a shell on the target system and can move laterally to search for other vulnerable services or sensitive data.
+
+2. Entry point: SSH service on port 22 with weak login credentials (e.g., default username and password, easily guessable password).
+   - Vulnerability exploited: Brute-force attack or use of previously stolen credentials.
+   - Resulting gain: Shell access as an administrator or user with elevated privileges.
+   - Logical reason the attacker can proceed to the next step: The attacker now has higher privileges and can perform more destructive actions, such as modifying system files, installing malware, or accessing sensitive data.
+
+3. Entry point: Misconfigured Elasticsearch cluster with open access and no authentication enabled (e.g., listening on 0.0.0.0:9200).
+   - Vulnerability exploited: Unauthorized access to the Elasticsearch API.
+   - Resulting gain: Access to sensitive data stored in the Elasticsearch indexes, such as customer records, internal documents, or proprietary information.
+   - Logical reason the attacker can proceed to the next step: The attacker can now exfiltrate the stolen data and potentially use it for further attacks or sell it on the dark web. Additionally, the attacker can attempt to pivot to other networks connected to the Elasticsearch cluster.

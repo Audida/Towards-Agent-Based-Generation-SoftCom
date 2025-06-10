@@ -1,0 +1,14 @@
+1. Entry point: Externally exposed HTTP service on port 80 with a known vulnerable web application (e.g., Apache Struts).
+   Vulnerability exploited: Remote Code Execution (RCE) vulnerability in the web application (CVE-2017-5638).
+   Resulting gain: Shell access on the web server.
+   Logical reason the attacker can proceed to the next step: The attacker now has a shell on the web server, which can be used to move laterally within the network.
+
+2. Entry point: The compromised web server with elevated privileges.
+   Vulnerability exploited: Privilege escalation vulnerability in an outdated package installed on the web server (e.g., OpenSSL).
+   Resulting gain: Root access on the compromised web server.
+   Logical reason the attacker can proceed to the next step: The attacker now has root access on the web server, allowing them to access sensitive data or move to other systems on the network.
+
+3. Entry point: The compromised web server with root access.
+   Vulnerability exploited: Misconfigured database connection with hard-coded credentials on the compromised web server.
+   Resulting gain: Access to a sensitive database containing customer information.
+   Logical reason the attacker can proceed to the next step: The attacker has access to the database credentials, which can be used to access the database and extract sensitive data.

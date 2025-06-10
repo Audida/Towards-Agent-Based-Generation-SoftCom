@@ -1,0 +1,16 @@
+Step 1: Entry Point – Exposed HTTP Web Application with Outdated CMS  
+- CVE ID: CVE-2019-8942  
+- Brief description: WordPress before 5.0.1 allows remote attackers to execute arbitrary code via crafted requests that exploit a file upload vulnerability, leading to remote code execution (RCE) as the web server user.  
+- Why it fits that step: This CVE directly matches the scenario of exploiting an outdated WordPress installation to gain a web shell. It is well-documented, widely exploited, and relevant to Docker/Linux environments where WordPress is commonly deployed.
+
+Step 2: Privilege Escalation via Hard-Coded Credentials  
+- CVE ID: CVE-2019-5420  
+- Brief description: Ruby on Rails before 5.2.2.1 stores sensitive credentials in plaintext within configuration files (such as database.yml), which can be accessed by attackers who gain access to the server, leading to unauthorized database access.  
+- Why it fits that step: This CVE exemplifies the risk of hard-coded or plaintext credentials in application config files, which attackers can leverage for direct database access after initial compromise. The pattern is common in Docker/Linux deployments of web applications.
+
+Step 3: Lateral Movement to Internal Network via Misconfigured SSH  
+- CVE ID: CVE-2018-10933  
+- Brief description: libssh versions 0.6 and above have an authentication bypass vulnerability that allows an attacker to authenticate to an SSH server without valid credentials if password authentication is enabled and the server is misconfigured.  
+- Why it fits that step: This CVE demonstrates how SSH misconfiguration can allow attackers to gain unauthorized access to internal servers, especially when combined with credential discovery. It is relevant to Docker/Linux environments and matches the described lateral movement via SSH with weak authentication controls.
+
+These CVEs collectively illustrate a realistic attack chain in Docker/Linux environments, mapping directly to each described step.

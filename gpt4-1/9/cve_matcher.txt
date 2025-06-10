@@ -1,0 +1,14 @@
+Step 1: Entry Point – Exposed Web Application with Outdated CMS  
+- CVE ID: CVE-2019-8942  
+- Brief description: WordPress before 5.0.1 allows remote code execution via crafted requests that exploit a file upload vulnerability in the media library. Attackers can upload arbitrary files and execute code as the web server user.  
+- Why it fits that step: This CVE is a well-documented RCE affecting outdated WordPress installations, commonly exploited in real-world attacks against Docker/Linux environments. It enables attackers to gain a web shell and execute commands remotely, matching the described entry point.
+
+Step 2: Privilege Escalation via Hard-Coded Database Credentials  
+- CVE ID: CVE-2018-20148  
+- Brief description: WordPress before 5.0.3 stores database credentials in plaintext within the wp-config.php file. If an attacker gains shell access, they can easily retrieve these credentials and use them to access the MySQL database.  
+- Why it fits that step: This CVE highlights the risk of hard-coded credentials in WordPress configuration files, which is exactly the scenario described. Attackers with file system access can escalate privileges by connecting to the database and extracting sensitive data.
+
+Step 3: Lateral Movement to Internal Network via Misconfigured Docker Socket  
+- CVE ID: CVE-2019-5736  
+- Brief description: Docker before 18.09.2 allows attackers with access to a container to overwrite the host runc binary via the Docker socket, leading to container escape and root access on the host.  
+- Why it fits that step: This CVE is a classic example of Docker socket misconfiguration exploitation. If the Docker socket is world-writable or accessible from a container, attackers can use it to gain root on the host and move laterally within the internal network, as described in the attack scenario.

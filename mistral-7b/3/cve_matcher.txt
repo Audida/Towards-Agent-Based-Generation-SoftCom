@@ -1,0 +1,14 @@
+1. Entry point: Externally exposed HTTP service on port 80 with outdated and unpatched WordPress installation.
+   - CVE ID: CVE-2019-11371
+   - Brief description: Remote Code Execution (RCE) vulnerability in PHP's unserialize() function due to insufficient input validation.
+   - Why it fits that step: The attacker exploits this vulnerability in the outdated WordPress installation to execute arbitrary code, leading to shell access on the server.
+
+2. Entry point: The compromised server with shell access.
+   - CVE ID: CVE-2016-861141
+   - Brief description: Privilege escalation vulnerability in sudoers file due to improperly configured sudoers rules.
+   - Why it fits that step: The attacker exploits this misconfiguration to escalate privileges from a regular user to the root user, gaining full control over the server.
+
+3. Entry point: The compromised server with root access.
+   - CVE ID: CVE-2012-2122
+   - Brief description: Weak password vulnerability in MySQL due to the use of easily guessable or weak passwords.
+   - Why it fits that step: The attacker can exploit this vulnerability by guessing or brute-forcing the password to gain access to the MySQL database, allowing them to exfiltrate sensitive customer data.

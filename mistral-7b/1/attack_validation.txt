@@ -1,0 +1,11 @@
+The provided attack steps and associated CVEs form a technically valid exploit chain within a single containerized environment.
+
+The chain is valid because each step logically follows from the previous one, and the CVEs describe vulnerabilities that can be exploited to achieve the stated results.
+
+1. The attacker exploits the outdated and unpatched Struts vulnerability (CVE-2017-5638) to gain shell access on the server via a crafted malicious request to the /struts2-json-plugin/JSON-Validate action. This shell access allows the attacker to explore the system, find other vulnerable services, and potentially escalate privileges.
+
+2. The attacker then uses a brute-force attack on weak login credentials, which is not a vulnerability in software but a misconfiguration. However, the use of default usernames and passwords is often associated with CVE-2017-1000359, which is a CVE describing the use of default or hardcoded credentials in various software products. This unauthorized access to the server with a user account that has higher privileges than in the previous step allows the attacker to perform actions that were not possible with the lower-privileged user account, such as accessing sensitive data or modifying system settings.
+
+3. The attacker exploits the unsecured MySQL root account with a weak password (CVE-2012-2122) to gain unauthorized access to the database server. This unauthorized access to the database server allows the attacker to dump sensitive data, such as user credentials, financial information, or intellectual property. The attacker can also modify or delete data, disrupting the operations of the targeted organization.
+
+There are no suggested fixes for this valid exploit chain as the chain is based on the exploitation of known vulnerabilities and misconfigurations. However, it is important to note that regular patching, strong password policies, and secure configuration of services can help prevent such attacks.

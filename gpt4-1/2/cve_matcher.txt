@@ -1,0 +1,14 @@
+Step 1: Entry Point – Exposed Web Application with Outdated CMS  
+- CVE ID: CVE-2019-8942  
+- Brief description: WordPress before 5.0.1 allows remote code execution via crafted requests that exploit a file upload vulnerability in the media library. Attackers can upload arbitrary files and execute code as the web server user.  
+- Why it fits that step: This CVE directly matches the scenario of exploiting an outdated WordPress installation to gain a web shell, providing initial access to the server in a Docker/Linux environment.
+
+Step 2: Privilege Escalation via Misconfigured Sudo Permissions  
+- CVE ID: CVE-2019-14287  
+- Brief description: A vulnerability in Sudo before 1.8.28 allows a user with sudo privileges to execute commands as root even if the sudoers configuration is intended to restrict this. This can be triggered by specifying a user ID of -1 or 4294967295.  
+- Why it fits that step: This CVE demonstrates how misconfigured sudo permissions can be exploited for privilege escalation, especially when scripts are writable and can be executed with sudo, as described in the attack scenario.
+
+Step 3: Lateral Movement to Database via Hard-Coded Credentials  
+- CVE ID: CVE-2018-20148  
+- Brief description: WordPress before 5.0.1 stores database credentials in plaintext within the wp-config.php file. If an attacker gains access to the filesystem, these credentials can be used to access the MySQL database.  
+- Why it fits that step: This CVE highlights the risk of hard-coded credentials in configuration files, enabling attackers with root or file access to move laterally and compromise the internal database, as described in the scenario.

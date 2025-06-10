@@ -1,0 +1,15 @@
+Step 1: Entry point – Exposed HTTP Port with Vulnerable Web Application  
+- Vulnerability exploited: The attacker discovers an externally accessible web application running on port 80/443. The application is outdated and vulnerable to a known remote code execution (RCE) flaw (e.g., an unpatched WordPress plugin or a vulnerable file upload endpoint).  
+- Resulting gain: The attacker exploits the RCE vulnerability to execute arbitrary commands on the underlying web server, gaining an initial foothold with limited user privileges (e.g., www-data shell access).  
+- Logical reason to proceed: With shell access, the attacker can enumerate the local environment for further weaknesses, such as misconfigurations or sensitive files.
+
+Step 2: Privilege Escalation via Hard-Coded Credentials  
+- Vulnerability exploited: While exploring the compromised server, the attacker finds a configuration file with hard-coded credentials for a local database or system account (e.g., a MySQL root password in a PHP config file).  
+- Resulting gain: The attacker uses these credentials to authenticate as a higher-privileged user (e.g., database root or a local admin account), thereby increasing their control over the system.  
+- Logical reason to proceed: With elevated privileges, the attacker can access sensitive data and potentially pivot to other internal resources.
+
+Step 3: Lateral Movement and Sensitive Data Exfiltration  
+- Entry point: Internal access gained through compromised credentials and elevated privileges.  
+- Vulnerability exploited: The attacker discovers that the compromised server has SSH keys or VPN credentials stored in user directories, or that the database contains sensitive customer data.  
+- Resulting gain: The attacker uses the discovered SSH keys to move laterally to other internal systems, or dumps and exfiltrates sensitive data (e.g., customer records, intellectual property) from the database.  
+- Logical reason to proceed: The attacker has achieved their objective—accessing and exfiltrating high-value data or gaining persistence in the network for further attacks.

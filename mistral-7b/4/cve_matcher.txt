@@ -1,0 +1,14 @@
+1. Entry point: Externally exposed HTTP service on port 80 with known vulnerability (e.g., Apache Struts CVE-2017-5638).
+   - CVE ID: CVE-2017-5638
+   - Brief description: A Remote Code Execution (RCE) vulnerability in Apache Struts 2.0 - 2.3.31, allowing attackers to execute arbitrary code on the server.
+   - Why it fits that step: The vulnerability allows an attacker to execute arbitrary code on the server, resulting in shell access.
+
+2. Entry point: SSH service with weak login credentials (e.g., default username and password).
+   - CVE ID: Not applicable (this is a misconfiguration, not a vulnerability)
+   - Brief description: Weak login credentials (e.g., default username and password) make it easier for attackers to gain unauthorized access to the system using brute-force attacks.
+   - Why it fits that step: The weak login credentials allow an attacker to gain unauthorized access to the system.
+
+3. Entry point: Misconfigured MongoDB instance with no authentication enabled.
+   - CVE ID: CVE-2018-3638
+   - Brief description: MongoDB instances are vulnerable to unauthorized access if they are not properly secured, especially when no authentication is enabled. This CVE specifically refers to the default configuration of MongoDB, which exposes the database to the internet without authentication.
+   - Why it fits that step: The lack of authentication allows an attacker to directly access the MongoDB instance, resulting in access to sensitive data.

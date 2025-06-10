@@ -1,0 +1,14 @@
+1. Entry point: Externally exposed HTTP server running on port 80 with outdated and unpatched version of Apache Struts (CVE-2017-5638).
+   Vulnerability exploited: Remote Code Execution (RCE) due to insufficient input validation in the Struts `struts2-core` library.
+   Resulting gain: Arbitrary code execution on the server with the privileges of the Apache user.
+   Logical reason the attacker can proceed to the next step: The attacker now has a shell on the server and can search for sensitive data, including credentials for other services.
+
+2. Entry point: Service running on port 3306 with MySQL server version 5.5.x, which is outdated and vulnerable to the MySQL "bind-address" misconfiguration (CVE-2012-2122).
+   Vulnerability exploited: The MySQL server is listening on the public IP address, allowing remote attackers to connect and access the database without authentication.
+   Resulting gain: Unauthenticated access to the MySQL database containing sensitive data such as usernames, passwords, and financial information.
+   Logical reason the attacker can proceed to the next step: The attacker now has access to a treasure trove of sensitive data and can use this information to further compromise the network.
+
+3. Entry point: Service running on port 8080 with an outdated and unpatched version of Tomcat (CVE-2017-7802).
+   Vulnerability exploited: Remote Code Execution (RCE) due to insufficient input validation in the Tomcat Manager WebApplication.
+   Resulting gain: Arbitrary code execution on the server with the privileges of the Tomcat user.
+   Logical reason the attacker can proceed to the next step: The attacker now has a shell on the server and can use it to move laterally within the network, potentially compromising other services and escalating privileges.

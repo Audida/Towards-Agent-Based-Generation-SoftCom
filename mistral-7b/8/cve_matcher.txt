@@ -1,0 +1,14 @@
+1. Entry point: Externally exposed, misconfigured Apache HTTP server on port 80
+   - CVE ID: CVE-2019-0211
+   - Brief description: Apache Log4j2 Remote Code Execution vulnerability allows an attacker to execute arbitrary code by sending a crafted log message to a Log4j2-enabled Java application.
+   - Why it fits that step: The attacker exploits the misconfigured Apache server to execute arbitrary code, which can lead to remote code execution in the context of the Apache server.
+
+2. Entry point: Privilege escalation using exploited Apache server
+   - CVE ID: CVE-2017-1000356
+   - Brief description: Linux sudo misconfiguration allows a local user to gain root privileges by modifying the sudoers file.
+   - Why it fits that step: The attacker, having gained code execution on the server, can potentially modify the sudoers file to gain persistent shell access with sudo privileges.
+
+3. Entry point: Privileged shell access
+   - CVE ID: CVE-2017-1000350
+   - Brief description: MongoDB Remote Code Execution vulnerability via unauthenticated REST API allows an attacker to execute arbitrary commands on the MongoDB server.
+   - Why it fits that step: With privileged shell access, the attacker can connect to the MongoDB server and exploit the unauthenticated REST API to gain unauthorized access to the MongoDB database containing sensitive data.

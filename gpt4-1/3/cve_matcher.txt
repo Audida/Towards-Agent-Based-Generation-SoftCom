@@ -1,0 +1,14 @@
+Step 1: Entry Point – Exposed Web Application with Outdated CMS  
+- CVE ID: CVE-2019-8942  
+- Brief description: WordPress before 5.0.1 contains a remote code execution vulnerability in the way it handles certain file uploads, allowing attackers to execute arbitrary code via crafted requests.  
+- Why it fits that step: This CVE is a well-documented RCE affecting WordPress, a common CMS in Docker/Linux environments. Exploiting this allows an attacker to gain a web shell as the web server user, matching the described initial foothold.
+
+Step 2: Privilege Escalation via Hard-Coded Credentials  
+- CVE ID: CVE-2018-1000525  
+- Brief description: In Docker versions prior to 18.09.1, secrets could be exposed in environment variables or configuration files, leading to potential credential leakage. Attackers who gain access to the container can discover hard-coded credentials and use them for privilege escalation.  
+- Why it fits that step: This CVE demonstrates how poor credential management and hard-coded secrets in Dockerized environments can be exploited for privilege escalation, aligning with the attacker's discovery and use of credentials for higher privileges.
+
+Step 3: Lateral Movement to Internal File Share  
+- CVE ID: CVE-2017-7494  
+- Brief description: Samba from version 3.5.0 onwards contains a remote code execution vulnerability that allows authenticated users to upload a shared library to a writable share and cause the server to load and execute it.  
+- Why it fits that step: This CVE is a classic example of a misconfigured SMB/Samba share in Linux environments, where authenticated users (even with low privileges) can access or exploit internal file shares, enabling lateral movement and data exfiltration as described in the scenario.

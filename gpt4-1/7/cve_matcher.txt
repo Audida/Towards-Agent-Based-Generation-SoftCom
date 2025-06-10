@@ -1,0 +1,16 @@
+Step 1: Exposed Web Application on Port 80  
+- CVE ID: CVE-2019-6340  
+- Brief description: This vulnerability affects Drupal, a popular CMS. It allows remote code execution via specially crafted requests due to improper input validation in RESTful web services.  
+- Why it fits that step: The scenario describes an outdated CMS with a known RCE flaw. CVE-2019-6340 is a well-documented, widely exploited RCE in Drupal that can be triggered via HTTP requests, matching the attacker's initial entry vector and method.
+
+Step 2: Access to Configuration Files via Web Shell  
+- CVE ID: CVE-2018-15133  
+- Brief description: This vulnerability affects Laravel, a PHP framework commonly used in CMS applications. It allows attackers to exploit improper permissions on the .env configuration file, which is often world-readable and contains sensitive credentials.  
+- Why it fits that step: The attacker leverages web shell access to read a world-readable configuration file containing hard-coded credentials. CVE-2018-15133 is a real-world example where attackers can read sensitive config files due to misconfiguration, directly matching this step.
+
+Step 3: Authenticated Access to the Database  
+- CVE ID: CVE-2016-6663  
+- Brief description: This vulnerability affects MySQL and MariaDB. Authenticated users with certain privileges can exploit improper handling of temporary files to escalate their privileges to root within the database system.  
+- Why it fits that step: The attacker, having obtained valid database credentials, exploits a privilege escalation flaw in the database software to gain administrative access. CVE-2016-6663 is a documented privilege escalation vulnerability in MySQL/MariaDB, fitting the described scenario of escalating from user to admin within the database.
+
+These CVEs represent real-world, well-documented vulnerabilities that align with each stage of the described Docker/Linux attack scenario.

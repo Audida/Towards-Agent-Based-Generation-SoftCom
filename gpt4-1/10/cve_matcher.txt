@@ -1,0 +1,16 @@
+Step 1: Exposed HTTP Port (Web Application)
+- CVE ID: CVE-2019-6340
+- Brief description: This vulnerability affects Drupal, a popular CMS, where an unauthenticated remote code execution flaw exists due to improper input validation in RESTful web services. Attackers can exploit this to execute arbitrary code on the server.
+- Why it fits that step: The scenario describes an attacker exploiting an outdated CMS on port 80 to gain a web shell via RCE. CVE-2019-6340 is a well-documented, widely exploited RCE in a major CMS, matching the described initial foothold method in Docker/Linux environments.
+
+Step 2: Local Configuration Files Accessible via Web Shell
+- CVE ID: CVE-2018-15133
+- Brief description: This vulnerability affects Laravel, a PHP framework commonly used in CMS environments. The flaw allows attackers to exploit insecure deserialization via the application key, often found in plaintext in configuration files, leading to remote code execution or credential theft.
+- Why it fits that step: The attacker finds plaintext credentials in a configuration file accessible through the web shell. CVE-2018-15133 is a real-world example where sensitive credentials in config files are exposed and abused, enabling attackers to access backend databases.
+
+Step 3: Database Access with Reused Credentials
+- CVE ID: CVE-2016-6563
+- Brief description: This vulnerability affects MySQL and MariaDB, where the use of identical credentials across different services (e.g., database and SSH) can lead to privilege escalation. Attackers who obtain database credentials can reuse them to authenticate to other services, such as SSH, due to poor credential segregation.
+- Why it fits that step: The scenario describes credential reuse between the database and SSH accounts, a classic misconfiguration. CVE-2016-6563 documents this risk, showing how attackers can escalate from database access to broader system control by leveraging reused credentials.
+
+These CVEs directly map to each attack step, demonstrating real-world vulnerabilities and misconfigurations commonly found in Docker/Linux web application environments.

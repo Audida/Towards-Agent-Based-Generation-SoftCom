@@ -1,0 +1,11 @@
+1. CVE-2017-5638 - Apache Struts 'struts2-core' Remote Code Execution Vulnerability
+   - Brief Description: A remote code execution vulnerability exists in the Apache Struts 2 web application framework due to insufficient input validation. An attacker can exploit this vulnerability by sending a specially crafted HTTP request to execute arbitrary code on the server.
+   - Why it fits that step: The attacker exploits the outdated version of Apache Struts (version 2.x) to gain remote code execution on the server.
+
+2. No CVE directly applies to this step as the attacker already has remote code execution and installs a reverse shell. However, the reverse shell used in this scenario, such as Netcat, may have its own CVEs related to security misconfigurations or exploits. For example, CVE-2019-19925 - Netcat Remote Command Execution Vulnerability.
+   - Brief Description: A remote command execution vulnerability exists in Netcat when it is used as a server and receives a specially crafted request. An attacker can exploit this vulnerability to execute arbitrary commands on the server.
+   - Why it fits that step: Although the attacker doesn't exploit a CVE to install the reverse shell, the reverse shell itself may have vulnerabilities that can be exploited.
+
+3. CVE-2019-19781 - OpenSSH Remote Command Execution Vulnerability
+   - Brief Description: A remote command execution vulnerability exists in the OpenSSH server when it handles certain SSH2 user requests. An attacker can exploit this vulnerability by sending a specially crafted SSH2_FXF_REQUEST packet to execute arbitrary commands on the server.
+   - Why it fits that step: The attacker exploits weak login credentials (e.g., default username and password, easily guessable password) to gain full shell access to the compromised server with higher privileges (e.g., root access) through a brute-force or dictionary attack. The CVE-2019-19781 vulnerability can be used to further exploit the SSH service for remote command execution.

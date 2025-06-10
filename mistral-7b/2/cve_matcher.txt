@@ -1,0 +1,14 @@
+1. Entry point: Externally exposed HTTP service on port 80 with outdated and unpatched web application (e.g., Drupal 7 or Joomla 2.5)
+   - CVE ID: CVE-2018-7600
+   - Brief description: Drupalgeddon2 is a Remote Code Execution (RCE) vulnerability in Drupal 7 and 8 that allows an attacker to execute arbitrary PHP code via a specially crafted request.
+   - Why it fits that step: The attacker can exploit this RCE vulnerability to gain shell access on the web server via a reverse shell.
+
+2. Entry point: Sensitive data stored in a database accessible from the compromised web server (e.g., MySQL or MongoDB)
+   - CVE ID: CVE-2017-6074
+   - Brief description: This vulnerability is due to the use of hard-coded credentials in the Drupal core's search_api_database module. An attacker with access to the search index files can extract the database credentials.
+   - Why it fits that step: The attacker can access the database dump containing sensitive data (e.g., usernames, passwords, credit card numbers) by exploiting this vulnerability.
+
+3. Entry point: Another service or interface accessible from the compromised web server (e.g., SSH, FTP, or RDP)
+   - CVE ID: CVE-2019-15126
+   - Brief description: This vulnerability is due to the use of weak or default SSH keys in Docker containers. An attacker who gains access to the container can escalate privileges and gain shell access on the host system.
+   - Why it fits that step: The attacker can exploit this vulnerability to gain shell access on another system within the network by finding weak or default SSH keys in system logs or configuration files.

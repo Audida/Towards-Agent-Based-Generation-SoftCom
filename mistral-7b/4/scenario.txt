@@ -1,0 +1,14 @@
+1. Entry point: Externally exposed HTTP service on port 80 with known vulnerability (e.g., Apache Struts CVE-2017-5638).
+   - Vulnerability exploited: Remote Code Execution (RCE) exploit for the said vulnerability.
+   - Resulting gain: Shell access on the server hosting the service.
+   - Logical reason the attacker can proceed to the next step: The attacker now has a shell on the compromised server, which can be used to explore the system and search for other vulnerable services or sensitive data.
+
+2. Entry point: SSH service with weak login credentials (e.g., default username and password).
+   - Vulnerability exploited: Brute-force attack on the weak login credentials.
+   - Resulting gain: Unauthorized access to the system using the compromised SSH account.
+   - Logical reason the attacker can proceed to the next step: The attacker now has a foothold in the network, which can be used to move laterally and search for other systems with potential vulnerabilities or sensitive data.
+
+3. Entry point: Misconfigured MongoDB instance with no authentication enabled.
+   - Vulnerability exploited: No authentication means the attacker can directly access the database.
+   - Resulting gain: Access to the sensitive data stored in the MongoDB instance.
+   - Logical reason the attacker can proceed to the next step: The attacker now has access to potentially valuable data, which can be used for further attacks (e.g., data exfiltration, identity theft, etc.). The attacker can also use this data to pivot into other systems within the network.

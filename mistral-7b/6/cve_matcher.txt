@@ -1,0 +1,14 @@
+1. Entry point: Externally exposed HTTP service on port 80 with a known vulnerable web application (e.g., Apache Struts).
+   - CVE ID: CVE-2017-5638
+   - Brief description: A Remote Code Execution (RCE) vulnerability in Apache Struts 2.0 - 2.3.31 due to improper input validation.
+   - Why it fits that step: The attacker exploits the RCE vulnerability in the web application to gain shell access on the web server.
+
+2. Entry point: The compromised web server with elevated privileges.
+   - CVE ID: CVE-2016-0703
+   - Brief description: A privilege escalation vulnerability in OpenSSL 1.0.2 before 1.0.2k (Affecting OpenSSL 1.0.1, 1.0.2, and 1.1.0 before 1.1.0h) allows attackers to gain root access on systems running OpenSSL.
+   - Why it fits that step: The attacker exploits the privilege escalation vulnerability in an outdated package installed on the web server to gain root access on the compromised web server.
+
+3. Entry point: The compromised web server with root access.
+   - CVE ID: CVE-2019-11353
+   - Brief description: A misconfiguration vulnerability in MySQL and MariaDB servers that allow unauthenticated users to access databases if the server is configured to listen on an interface with an IP address of 0.0.0.0 or ::0.
+   - Why it fits that step: The attacker exploits the misconfigured database connection with hard-coded credentials on the compromised web server to access a sensitive database containing customer information.

@@ -1,0 +1,14 @@
+Step 1: Entry Point – Exposed Web Application with Outdated CMS  
+- CVE ID: CVE-2019-6340  
+- Brief description: This vulnerability affects Drupal, a popular CMS. It allows remote code execution via specially crafted requests to RESTful web services, enabling attackers to execute arbitrary code on the server.
+- Why it fits that step: The scenario describes an outdated CMS with an RCE vulnerability exploitable via HTTP POST. CVE-2019-6340 is a well-documented RCE in Drupal that matches this attack vector and is commonly exploited in Docker/Linux environments.
+
+Step 2: Privilege Escalation via Hard-Coded Credentials  
+- CVE ID: CVE-2019-5021  
+- Brief description: This vulnerability affects the official Docker Alpine Linux images, which, due to a misconfiguration, shipped with a blank root password. This allowed attackers to escalate privileges using default or hard-coded credentials.
+- Why it fits that step: The attacker finds hard-coded credentials and uses them to escalate privileges. CVE-2019-5021 is a real-world example where poor credential management in a Docker/Linux environment led to privilege escalation, aligning with the described scenario.
+
+Step 3: Lateral Movement via Misconfigured Internal Service  
+- CVE ID: CVE-2015-4335  
+- Brief description: This vulnerability affects Redis, an in-memory data structure store. When Redis is run with default settings, it does not require authentication and listens on all interfaces, allowing unauthenticated access and remote code execution.
+- Why it fits that step: The attacker exploits a misconfigured internal service (Redis) that allows unauthenticated access. CVE-2015-4335 is a classic example of this misconfiguration, enabling attackers to move laterally and access sensitive data or execute commands on additional hosts within Docker/Linux environments.

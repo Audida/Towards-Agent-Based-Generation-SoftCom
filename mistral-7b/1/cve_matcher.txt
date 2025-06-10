@@ -1,0 +1,11 @@
+1. CVE-2017-5638
+   - CVE ID: CVE-2017-5638
+   - Brief Description: Apache Struts 2.3.x through 2.3.31, 2.5.x through 2.5.10, and 2.5.14 through 2.5.16 have a Remote Code Execution (RCE) vulnerability due to improper input validation in the Struts 2 JSON-JSONP serialization mechanism.
+   - Why it fits that step: The attacker exploits the outdated and unpatched Struts vulnerability (CVE-2017-5638) to gain shell access on the server via a crafted malicious request to the /struts2-json-plugin/JSON-Validate action.
+
+2. No CVE directly matches this step as it involves a brute-force attack on weak login credentials, which is not a vulnerability in software but a misconfiguration. However, the use of default usernames and passwords is often associated with CVE-2017-1000359, which is a CVE describing the use of default or hardcoded credentials in various software products.
+
+3. CVE-2012-2122
+   - CVE ID: CVE-2012-2122
+   - Brief Description: MySQL before 5.5.32, 5.6.x before 5.6.16, and 5.7.x before 5.7.6 have a vulnerability due to the use of a weak password for the MySQL root account. An attacker can use a brute-force attack to gain unauthorized access to the database server.
+   - Why it fits that step: The attacker exploits the unsecured MySQL root account with a weak password to gain unauthorized access to the database server.

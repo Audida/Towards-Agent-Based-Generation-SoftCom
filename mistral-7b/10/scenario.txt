@@ -1,0 +1,14 @@
+1. Entry point: Externally exposed HTTP server (port 80 or 8080) running an outdated version of Apache Struts (version 2.x) with known CVE-2017-5638 (Apache Struts 'struts2-core' Remote Code Execution Vulnerability)
+   Vulnerability exploited: Attacker sends a specially crafted HTTP request to exploit the remote code execution vulnerability in the Apache Struts library
+   Resulting gain: Remote code execution on the server
+   Logical reason the attacker can proceed to the next step: Once the attacker gains remote code execution, they can install additional tools, such as a reverse shell, to maintain persistence and further explore the network
+
+2. Entry point: The compromised server now hosts a reverse shell (e.g., Netcat) listening on a high port (e.g., 4444)
+   Vulnerability exploited: None, as the attacker already has remote code execution and can install the reverse shell
+   Resulting gain: Attacker gains a persistent shell access to the compromised server
+   Logical reason the attacker can proceed to the next step: With shell access, the attacker can move laterally within the network, search for other vulnerable services, and escalate privileges
+
+3. Entry point: SSH service running on the compromised server with weak login credentials (e.g., default username and password, easily guessable password)
+   Vulnerability exploited: Brute-force or dictionary attack against the weak login credentials
+   Resulting gain: Full shell access to the compromised server with higher privileges (e.g., root access)
+   Logical reason the attacker can proceed to the next step: With higher privileges, the attacker can access sensitive data, modify system configurations, and move laterally within the network to compromise additional systems

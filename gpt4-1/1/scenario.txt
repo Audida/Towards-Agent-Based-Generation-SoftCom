@@ -1,0 +1,15 @@
+Step 1: Entry Point – Exposed Web Application Running Outdated CMS  
+- Vulnerability Exploited: The attacker discovers an externally accessible HTTP port (port 80/443) running a WordPress site with an outdated plugin known to have a remote code execution (RCE) vulnerability.  
+- Resulting Gain: By exploiting the RCE flaw, the attacker uploads a web shell, gaining initial foothold and remote command execution as the web server user.  
+- Logical Reason to Proceed: With shell access, the attacker can enumerate the environment and look for further weaknesses.
+
+Step 2: Privilege Escalation via Hard-Coded Credentials  
+- Vulnerability Exploited: While exploring the web server’s file system, the attacker finds a configuration file containing hard-coded credentials for a local MySQL database and for a system user account.  
+- Resulting Gain: The attacker uses the discovered system credentials to escalate privileges, logging in as a more privileged user (e.g., via SSH or local su), gaining broader access to the host and its file system.  
+- Logical Reason to Proceed: With elevated privileges, the attacker can now access sensitive files and potentially pivot to other internal resources.
+
+Step 3: Lateral Movement and Data Exfiltration  
+- Entry Point: SSH access as a privileged user  
+- Vulnerability Exploited: The attacker discovers that SSH key-based authentication is enabled and that the same key is reused across multiple internal servers.  
+- Resulting Gain: Using the compromised SSH key, the attacker laterally moves to a database server, where they are able to dump sensitive customer data.  
+- Logical Reason to Proceed: The attacker’s initial access and privilege escalation provide the means to move laterally and access high-value targets, resulting in data exfiltration.

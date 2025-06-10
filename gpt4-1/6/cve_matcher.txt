@@ -1,0 +1,19 @@
+Step 1: Entry Point – Exposed Web Application with Outdated CMS  
+- CVE ID: CVE-2019-8942  
+- Brief description: WordPress before 5.0.1 allows remote code execution via crafted requests that exploit a file upload vulnerability in the core, or via vulnerable plugins such as "WP GDPR Compliance" (CVE-2018-19207). Attackers can upload arbitrary files and execute code as the web server user.  
+- Why it fits that step: This CVE directly matches the scenario of exploiting an outdated WordPress installation to gain a web shell, as it allows arbitrary code execution through a well-documented vulnerability in a commonly exposed Docker/Linux environment.
+
+Step 2: Privilege Escalation via Misconfigured Sudo  
+- CVE ID: CVE-2019-14287  
+- Brief description: A vulnerability in sudo (all versions prior to 1.8.28) allows a user with sudo privileges to run commands as root even if explicitly forbidden, by specifying user ID -1 or 4294967295. This can be exploited if the sudoers file is misconfigured, allowing escalation to root.  
+- Why it fits that step: This CVE is a classic example of privilege escalation due to sudo misconfiguration, which is common in Docker/Linux environments. It allows an attacker with limited sudo rights (such as running vim) to gain full root access, matching the described attack step.
+
+Step 3: Lateral Movement to Internal Database via Hard-Coded Credentials  
+- CVE ID: CVE-2018-20148  
+- Brief description: WordPress before 5.0.3 stores database credentials in plaintext within the wp-config.php file. If an attacker gains root access, they can easily retrieve these credentials and use them to access the internal MySQL database.  
+- Why it fits that step: This CVE highlights the risk of hard-coded credentials in configuration files, which is exactly the scenario described. With root access, the attacker can extract these credentials and connect to the internal database, facilitating lateral movement and data exfiltration.
+
+Summary:
+1. CVE-2019-8942 – WordPress RCE for initial shell access.
+2. CVE-2019-14287 – Sudo privilege escalation to root.
+3. CVE-2018-20148 – Hard-coded credentials in wp-config.php for database access.
